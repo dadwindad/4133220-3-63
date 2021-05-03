@@ -42,9 +42,9 @@
 
     <button class="btn_load" type="button" data="one">ONE</button>
     <button class="btn_load" type="button" data="two">TWO</button>
-    <button class="btn_load" type="button" data="data">data</button>
+    <button class="btn_load" type="button" data="data">API</button>
+    <button class="btn_load" type="button" data="data-table">DATA-TABLE</button>
 
-    
     <div id="div_load"></div>
 
     <script src="./assets/js/bootstrap.min.js"></script>
@@ -64,7 +64,25 @@
         });
 
         $("[data='data']").click(function(){
-            alert();
+            $.ajax({
+                method: "GET",
+                url:"./models/template/list_data.php",
+                data: {},
+                success: function (msg) { 
+                    $("#div_load").text(msg);
+                 }
+            });
+        });
+
+        $("[data='data-table']").click(function(){
+            $.ajax({
+                method: "GET",
+                url:"./models/template/list_data_table.php",
+                data: {},
+                success: function (msg) { 
+                    $("#div_load").html(msg);
+                 }
+            });
         });
 
 
